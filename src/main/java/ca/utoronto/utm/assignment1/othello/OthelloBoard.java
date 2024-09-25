@@ -223,7 +223,7 @@ public class OthelloBoard {
 		if (!validCoordinate(row, col) || this.board[row][col] != EMPTY) {
 			return false;
 		}
-		if (hasMove() != player && hasMove() != BOTH) {
+		if (hasMove() != player && hasMove() != BOTH && hasMove() == EMPTY) {
 			return false;
 		}
 		boolean validMove = false;
