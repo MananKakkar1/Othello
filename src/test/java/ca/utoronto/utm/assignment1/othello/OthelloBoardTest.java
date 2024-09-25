@@ -16,7 +16,6 @@ public class OthelloBoardTest {
         board.move(2, 5, OthelloBoard.P2);
         board.move(2, 6, OthelloBoard.P1);
         board.move(2, 3, OthelloBoard.P2);
-
         // Board now looks like
         //   0 1 2 3 4 5 6 7
         //  +-+-+-+-+-+-+-+-+
@@ -132,6 +131,7 @@ public class OthelloBoardTest {
         //   0 1 2 3 4 5 6 7
         //
         // X:4 O:4  X moves next
+
         assertEquals(OthelloBoard.EMPTY, board.get(2, 0));
         assertEquals(OthelloBoard.EMPTY, board.get(2, 1));
         assertEquals(OthelloBoard.EMPTY, board.get(2, 2));
