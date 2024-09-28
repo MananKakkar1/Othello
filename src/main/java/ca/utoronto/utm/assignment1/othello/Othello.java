@@ -20,7 +20,7 @@ public class Othello {
 	public static final int DIMENSION = 8; // This is an 8x8 game
 	private char whosTurn = OthelloBoard.P1; // P1 moves first!
 	private int numMoves = 0;
-	private OthelloBoard board = new OthelloBoard(DIMENSION);
+	private final OthelloBoard board = new OthelloBoard(DIMENSION);
 
 	/**
 	 * return P1,P2 or EMPTY depending on who moves next.
@@ -28,7 +28,7 @@ public class Othello {
 	 * @return P1, P2 or EMPTY
 	 */
 	public char getWhosTurn() {
-		return whosTurn;
+		return this.whosTurn;
 	}
 
 	/**
@@ -41,12 +41,23 @@ public class Othello {
 	 * @return whether the move was successfully made.
 	 */
 	public boolean move(int row, int col) {
-		if (board.move(row, col, whosTurn)) {
-			numMoves++;
-			whosTurn = OthelloBoard.otherPlayer(whosTurn);
+		if (board.move(row, col, this.whosTurn)) {
+			this.numMoves++;
+			this.whosTurn = OthelloBoard.otherPlayer(this.whosTurn);
 			return true;
 		}
+		else if (this.board.hasMove() == OthelloBoard.otherPlayer(this.whosTurn)) {
+			this.whosTurn = OthelloBoard.otherPlayer(this.whosTurn);
+		}
 		return false;
+	}
+
+	public OthelloBoard copy() {
+		return this.board.copy();
+	}
+
+	public int getDimension() {
+		return this.board.getDimension();
 	}
 
 	/**

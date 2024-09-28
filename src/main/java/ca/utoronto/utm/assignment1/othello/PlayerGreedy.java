@@ -22,7 +22,29 @@ package ca.utoronto.utm.assignment1.othello;
  */
 
 public class PlayerGreedy {
+
+
+	private final char player;
+	private final Othello othello;
+	public PlayerGreedy(Othello othello, char player) {
+		this.player = player;
+		this.othello = othello;
+	}
 	public Move getMove() {
-		return null;
+		Move bestMove = null;
+		int maxTokens = -1;
+		for (int row = 0; row < othello.getDimension(); row++) {
+			for (int col = 0; col < othello.getDimension(); col++) {
+				OthelloBoard copied = this.othello.copy();
+				if (copied.move(row, col, this.player)) {
+					int currTokenCount = copied.getCount(this.player);
+					if (currTokenCount > maxTokens) {
+						maxTokens = currTokenCount;
+						bestMove = new Move(row, col);
+					}
+				}
+			}
+		}
+		return bestMove;
 	}
 }

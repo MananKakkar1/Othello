@@ -55,6 +55,16 @@ public class OthelloBoard {
 		}
 	}
 
+	public OthelloBoard copy() {
+		OthelloBoard copy = new OthelloBoard(this.dim);
+		for (int row = 0; row < this.dim; row++) {
+			for (int col = 0; col < this.dim; col++) {
+				copy.board[row][col] = this.board[row][col];
+			}
+		}
+		return copy;
+	}
+
 	/**
 	 * 
 	 * @param row starting row, in {0,...,dim-1} (typically {0,...,7})
@@ -119,6 +129,7 @@ public class OthelloBoard {
 		}
 		return EMPTY;
 	}
+
 
 	/**
 	 * flip all other player tokens to player, starting at (row,col) in direction
