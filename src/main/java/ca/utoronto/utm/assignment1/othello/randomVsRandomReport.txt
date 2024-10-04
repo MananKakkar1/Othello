@@ -1,21 +1,34 @@
 RandomVSRandom Report
 
 1) What is your conclusion, does the first or
-second player have some advantage, at least for a random strategy? 
+second player have some advantage, at least for a random strategy?
+After running many games in the RandomVsRandom Controller, I noticed that P2 has a slight advantage as it has greater
+wins than P1 in most of the games.
 
 2) Watch https://www.youtube.com/watch?v=Iq9DzN6mvYA
 
 3) Briefly write your thoughts on the above video below:
+The video talks about key methods in machine learning.Jake talks about the importance of cross-validation.
+He highlights how cross-validation helps asses model performance using the Lorax analogy.
+One more thing he highlights in this video would be the risks of overfitting and discusses
+sampling methods like bootstrapping. Overall, I found this video very informative and interesting.
 
-4) H0 is 
+4) H0 is the null hypothesis. It is the assumption that there is no significant difference between Player 1 and Player 2.
+That is, both players have an equal chance of winning over a large number of games,
+as in theory, the random strategy does not favor one player over the other.
 
-5) Ha is 
+5) Ha is the alternative hypothesis. Ha claims that there is a significant difference between Player 1 and Player 2,
+suggesting that one of the players (either P1 or P2) has an advantage even when playing with a random strategy.
 
 6) Choose one of the following and delete the other:
-   My experimental results support H0, so they do not support Ha
    My experimental results do not support H0, so they support Ha
 
 7) As in the video, use either math or code (add a Java Class) to argue for or against H0
-
+From randomVsRandomTest, we can see that P2 has a slight advantage over P1 in both versions of the game, even though
+each player is using random strategies. In the first, we swap the player who goes first each turn and still see an advantage for p2
+through 10 trials running 1000 games each. In this version of the game, we see that P2 has an advantage
+through 10 trials running 1000 games each. In the second version, we keep player1 going first each time
+and we still notice that P2 has an advantage. I can conclude that H0 can be rejected in this case as there are many
+differences in win rates that exceed the set threshold and support Ha.
 References: 
 https://www.thoughtco.com/null-hypothesis-vs-alternative-hypothesis-3126413

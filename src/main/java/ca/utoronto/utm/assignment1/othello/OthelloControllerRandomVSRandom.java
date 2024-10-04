@@ -53,7 +53,7 @@ public class OthelloControllerRandomVSRandom {
 
 	public static void main(String[] args) {
 		
-		int p1wins = 0, p2wins = 0, numGames = 1000;
+		int p1wins = 0, p2wins = 0, numGames = 10000;
 		for (int i = 0; i < numGames; i++) {
 			OthelloControllerRandomVSRandom oc = new OthelloControllerRandomVSRandom();
 			oc.play();
