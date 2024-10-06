@@ -11,17 +11,27 @@ import java.util.Random;
  * @author arnold
  *
  */
-public class PlayerRandom {
+public class PlayerRandom extends Player {
 
-	private final char player;
-	private final Othello othello;
 	private final Random rand = new Random();
 
+	/**
+	 * Constructs a PlayerRandom with the specified othello game instance and player character.
+	 * This constructor calls the superclass constructor to initialize the game instance and player.
+	 * @param othello is the game instance that this player participates in.
+	 * @param player is the character representing this player (P1 or P2).
+	 */
 	public PlayerRandom(Othello othello, char player) {
-		this.player = player;
-		this.othello = othello;
+		super(othello, player);
 	}
 
+	/**
+	 * This method collects all possible moves that the player can make in an ArrayList and returns one of these
+	 * possible moves at random. If there are no valid moves, it returns null.
+	 * @return A Move object which represents a randomly selected valid move for the player,
+	 * or null if no valid moves are available.
+	 */
+	@Override
 	public Move getMove() {
 		ArrayList<Move> moves = new ArrayList<Move>();
 		for (int row = 0; row < this.othello.getDimension(); row++) {

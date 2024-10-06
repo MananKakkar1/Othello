@@ -19,6 +19,10 @@ public class OthelloBoard {
 	private int dim = 8;
 	private char[][] board;
 
+	/**
+	 * Constructor for OthelloBoard class
+	 * @param dim
+	 */
 	public OthelloBoard(int dim) {
 		this.dim = dim;
 		board = new char[this.dim][this.dim];
@@ -32,8 +36,11 @@ public class OthelloBoard {
 		this.board[mid][mid - 1] = this.board[mid - 1][mid] = P2;
 	}
 
+	/**
+	 * Get the dimension of the current board.
+	 * @return the dimension of the board.
+	 */
 	public int getDimension() {
-
 		return this.dim;
 	}
 
@@ -55,6 +62,11 @@ public class OthelloBoard {
 		}
 	}
 
+	/**
+	 * Makes a copy of the current board by looping through all possible
+	 * rows and columns and copying the tokens at each position.
+	 * @return Copied OthelloBoard
+	 */
 	public OthelloBoard copy() {
 		OthelloBoard copy = new OthelloBoard(this.dim);
 		for (int row = 0; row < this.dim; row++) {
@@ -171,16 +183,17 @@ public class OthelloBoard {
 	 */
 	private char hasMove(int row, int col, int drow, int dcol) {
 		if (!validCoordinate(row, col) || this.board[row][col] != EMPTY) {
-			return EMPTY;
+			return EMPTY; //Return empty if current cell is empty or is not a valid coordinate.
 		}
+		//Check the next cell in the direction (drow, dcol)
 		if (validCoordinate(row + drow, col + dcol) && this.board[row][col] == EMPTY) {
 			row += drow;
 			col += dcol;
 			char currentPlayer = this.board[row][col];
 			if (!validCoordinate(row, col) || currentPlayer == EMPTY) {
-				return EMPTY;
+				return EMPTY; //Return Empty if next cell is also empty.
 			} else {
-				return alternation(row, col, drow, dcol);
+				return alternation(row, col, drow, dcol); //Check if there is any alteration in the direction (drow, dcol)
 			}
 		}
 		return EMPTY;
@@ -195,11 +208,14 @@ public class OthelloBoard {
 	public char hasMove() {
 		boolean p1HasMove = false;
 		boolean p2HasMove = false;
+		//Loop over each cell on the board
 		for (int row = 0; row < this.dim; row++) {
 			for (int col = 0; col < this.dim; col++) {
 				if (this.board[row][col] == EMPTY) {
+					//Also loop and check every possible direction (drow, dcol)
 					for (int drow = -1; drow <= 1; drow++) {
 						for (int dcol = -1; dcol <= 1; dcol++) {
+							//Avoid the (0, 0) direction case and check for if next cell in direction exists in the dimension of the board
 							if ((drow != 0 || dcol != 0) && validCoordinate(row+drow, col+dcol)) {
 								char result = hasMove(row, col, drow, dcol);
 								if (result == P1) p1HasMove = true;
@@ -232,16 +248,17 @@ public class OthelloBoard {
 		// HINT: Use some of the above helper methods to get this methods
 		// job done!!
 		if (!validCoordinate(row, col) || this.board[row][col] != EMPTY) {
-			return false;
+			return false; //Return false if move cell is occupied or out of bounds.
 		}
 		if (hasMove() != player && hasMove() != BOTH && hasMove() == EMPTY) {
-			return false;
+			return false; //Return false if there are no valid moves for the player
 		}
 		boolean validMove = false;
+		//Loop for all possible directions
 		for (int drow = -1; drow <= 1; drow++) {
 			for (int dcol = -1; dcol <= 1; dcol++) {
 				if (drow == 0 && dcol == 0) {
-					continue;
+					continue; //Skip (0, 0) direction
 				}
 				if (hasMove(row, col, drow, dcol) == player) {
 					int flipped = flip(row+drow, col+dcol, drow, dcol, player);
@@ -252,7 +269,7 @@ public class OthelloBoard {
 			}
 		}
 		if (validMove) {
-			board[row][col] = player;
+			board[row][col] = player; //place the player's token.
 		}
 		return validMove;
 	}

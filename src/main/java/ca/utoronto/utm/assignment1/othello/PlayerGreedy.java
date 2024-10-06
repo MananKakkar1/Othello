@@ -21,15 +21,25 @@ package ca.utoronto.utm.assignment1.othello;
  *
  */
 
-public class PlayerGreedy {
+public class PlayerGreedy extends Player{
 
-
-	private final char player;
-	private final Othello othello;
+	/**
+	 * Constructs a PlayerGreedy with the specified Othello game instance and player character.
+	 * This constructor calls the superclass constructor to initialize the game instance and player.
+	 * @param othello is the game instance that this player participates in.
+	 * @param player is the character representing this player (P1 or P2).
+	 */
 	public PlayerGreedy(Othello othello, char player) {
-		this.player = player;
-		this.othello = othello;
+		super(othello, player);
 	}
+
+	/**
+	 * This method checks all possible moves for the player and returns the move that maximizes the number of tokens
+	 * owned by the player. If multiple moves lead to the same amount of maximum tokens, the first move with the maximum
+	 * tokens is returned. It returns null if there are no valid possible moves.
+	 * @return A move object which represents the best move for the player or null if there are no valid moves.
+	 */
+	@Override
 	public Move getMove() {
 		Move bestMove = null;
 		int maxTokens = -1;

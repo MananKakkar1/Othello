@@ -52,10 +52,18 @@ public class Othello {
 		return false;
 	}
 
+	/**
+	 * Returns a copy of the current board by calling OthelloBoard.copy()
+	 * @return Copied OthelloBoard
+	 */
 	public OthelloBoard copy() {
 		return this.board.copy();
 	}
 
+	/**
+	 * Returns the dimension of the current board.
+	 * @return Dimension
+	 */
 	public int getDimension() {
 		return this.board.getDimension();
 	}

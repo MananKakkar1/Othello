@@ -3,34 +3,6 @@ package ca.utoronto.utm.assignment1.othello;
 import java.util.Random;
 
 public class randomVsRandomTest {
-    protected Othello othello;
-    PlayerRandom player1;
-    PlayerRandom player2;
-
-    public randomVsRandomTest() {
-        this.othello = new Othello();
-        this.player1 = new PlayerRandom(this.othello, OthelloBoard.P1);
-        this.player2 = new PlayerRandom(this.othello, OthelloBoard.P2);
-    }
-
-    public void play() {
-        while (!othello.isGameOver()) {
-            Move move = null;
-            char whosTurn = othello.getWhosTurn();
-
-            if (whosTurn == OthelloBoard.P1) {
-                move = player1.getMove();}
-            if (move == null) {
-                move = player2.getMove();
-            }
-            if (whosTurn == OthelloBoard.P2) {
-                move = player2.getMove();}
-            if (move == null) {
-                move = player1.getMove();
-            }
-            othello.move(move.getRow(), move.getCol());
-        }
-    }
 
     public static void main(String[] args) {
         System.out.println("This first version switches who goes first every other trial.");
